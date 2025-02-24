@@ -32,3 +32,6 @@ jobs:
     - name: deploy to s3
       run: |
         aws s3 cp ./dist s3://www.bradkim198.shop/ --recursive
+        
+    - name: invalidate cloudfront cache
+      run: aws cloudfront create-invalidation --distribution-id EQASEN1HMYFDK --paths "/*"
